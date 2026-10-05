@@ -8,6 +8,32 @@ A real-time messaging application built as a personal software engineering proje
 - improve my (almost non-existent) software engineering skills
 - create a real chat application that I can eventually use instead of messenger
 
+## Structure Plan
+
+src/
+├── app/
+│   ├── login/
+│   ├── register/
+│   ├── chat/
+│   ├── settings/
+│   ├── layout.tsx
+│   └── page.tsx
+│
+├── components/
+│   ├── chat/
+│   ├── conversations/
+│   ├── profile/
+│   └── ui/
+│
+├── lib/
+│   ├── supabase/
+│   ├── auth/
+│   └── utils/
+│
+├── types/
+│
+└── ...
+
 ## Tech Stack
 
 - TypeScript
