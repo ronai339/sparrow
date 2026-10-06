@@ -1,17 +1,18 @@
 "use client";
 
-import { Search, Settings2 } from "lucide-react";
-import { Conversation } from "@/types/chat";
-import { ConversationItem } from "./ConversationItem";
+import { Search, Settings2 } from "lucide-react"; // Icons from the lucide-react library
+import { Conversation } from "@/types/chat"; // Conversation type from the chat types file
+import { ConversationItem } from "./ConversationItem"; // ConversationItem component to render individual conversations
 
 type ConversationListProps = {
-  conversations: Conversation[];
-  selectedConversationId: string;
-  search: string;
-  onSearchChange: (value: string) => void;
-  onSelectConversation: (id: string) => void;
+  conversations: Conversation[]; // An array of conversation objects to display in the list
+  selectedConversationId: string; // The ID of the currently selected conversation
+  search: string; // The current search input value for filtering conversations
+  onSearchChange: (value: string) => void; // A callback function to handle changes in the search input
+  onSelectConversation: (id: string) => void; // A callback function to handle selecting a conversation from the list
 };
 
+// Renders a list of conversations with a search input and user info
 export function ConversationList({
   conversations,
   selectedConversationId,
@@ -19,9 +20,13 @@ export function ConversationList({
   onSearchChange,
   onSelectConversation,
 }: ConversationListProps) {
+
+  // Render the conversation list component
   return (
-    <aside className="flex h-full w-full flex-col border-r border-zinc-200 bg-white md:w-[340px] md:shrink-0">
+    <aside className="flex h-full w-full flex-col border-r border-zinc-200 bg-white md:w-85 md:shrink-0">
       <div className="border-b border-zinc-200 p-4">
+        
+        {/* Header section with title and settings button */}
         <div className="mb-4 flex items-center justify-between">
           <div>
             <p className="text-sm font-medium text-zinc-500">
@@ -41,12 +46,12 @@ export function ConversationList({
           </button>
         </div>
 
+        {/* Search input for filtering conversations */}
         <div className="relative">
           <Search
             size={18}
             className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400"
           />
-
           <input
             type="text"
             value={search}
@@ -57,6 +62,7 @@ export function ConversationList({
         </div>
       </div>
 
+      {/* Render the list of conversations or a message if no conversations are found */}
       <div className="flex-1 overflow-y-auto py-2">
         {conversations.length > 0 ? (
           conversations.map((conversation) => (
@@ -72,6 +78,7 @@ export function ConversationList({
             />
           ))
         ) : (
+          // Render a message when no conversations are found
           <div className="px-6 py-10 text-center">
             <p className="text-sm font-medium text-zinc-700">
               No conversations found
@@ -83,12 +90,12 @@ export function ConversationList({
         )}
       </div>
 
+      {/* User info section at the bottom of the conversation list */}
       <div className="border-t border-zinc-200 p-3">
         <div className="flex items-center gap-3 rounded-xl px-2 py-2">
           <div className="flex h-10 w-10 items-center justify-center rounded-full bg-zinc-900 text-sm font-semibold text-white">
             ME
           </div>
-
           <div className="min-w-0">
             <p className="truncate text-sm font-semibold text-zinc-900">
               You
